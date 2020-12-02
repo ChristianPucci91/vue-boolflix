@@ -1,0 +1,20 @@
+/* regole generali */
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* debug */
+  background-color: black;
+  padding: 20px;
+  /* fine debug */
+}
+
+.logo img {
+  width: 200px; 
+}

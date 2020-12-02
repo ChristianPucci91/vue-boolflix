@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>Vue boolfix by Christian Pucci</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+
+  </head>
+
+  <body>
+
+    <div id = "root">
+
+      <header>
+
+        <div class="logo"> <!-- logo boolfix -->
+          <img :src="logo" alt="">
+        </div>
+
+        <div> <!-- search bar -->
+          <input type="text" name="" value="" v-model="search" @keyup="filterMovie()">
+        </div>
+
+      </header>
+      <main>
+       <div class="movie" v-for="movie in movies">
+         <p>{{movie.title}}</p>
+
+       </div>
+      </main>
+
+
+
+    </div>
+
+    <script type="text/javascript" src="js/script.js">
+    </script>
+
+  </body>
+
+</html>
