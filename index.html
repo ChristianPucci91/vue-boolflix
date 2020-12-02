@@ -24,17 +24,18 @@
         </div>
 
         <div> <!-- search bar -->
-          <input type="text" name="" value="" v-model="search" @keyup="filterMovie()">
+          <button type="button" name="button" @click="filterMovie()">Cerca</button>
+          <input type="text" name="" value="" v-model="search" @keyup.enter="filterMovie()">
         </div>
 
       </header>
       <main>
        <div class="movie" v-for="movie in movies">
+
          <p>{{movie.title}}</p>
          <p>{{movie.original_title}}</p>
          <p>{{movie.original_language}}</p>
-          <p>{{movie.vote_average}}</p>
-
+         <p>{{movie.vote_average}}</p>
 
        </div>
       </main>
