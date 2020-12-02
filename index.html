@@ -8,6 +8,7 @@
     <title>Vue boolfix by Christian Pucci</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.css'/>
     <link rel="stylesheet" href="css/style.css">
 
 
@@ -35,9 +36,14 @@
          <p>{{movie.title}}</p>
          <p>{{movie.original_title}}</p>
          <p>{{movie.original_language}}</p>
-         <p>{{movie.vote_average}}</p>
+         <i v-for="number in getStars(movie.vote_average)" class="fas fa-star"></i><i v-for="number in (5 - getStars(movie.vote_average))" class="far fa-star"></i>
+         <!-- Milestone 2 : stamperò tante stelle colorate quanto sarà il voto_average dell film ciclato  se il voto è 6 lui ritornerà 3 dalla funzione e stamperà 3 icone <i> -->
+         <!-- Poi stamperò le stelle non colorate e sarà una semplice somma tra 5 che è il numero di stelle che voglio meno le stelle colorate.
+         Nel caso commentato sopra se avrò 3 stelle colorate farà 5-3 = 2  e mi stamperà 2 stelle vuote. -->
+
 
        </div>
+
       </main>
 
 

@@ -23,6 +23,12 @@ var app = new Vue({
       })
 
     },
+    //Funzione per trarre un voto da una scala di 10 a 5 Milestone 2
+    // Se il voto è 8 lui ritornerà 4
+      getStars(vote_average) {
+          return Math.ceil(vote_average / 2);
+      },
+
 
   }
 });

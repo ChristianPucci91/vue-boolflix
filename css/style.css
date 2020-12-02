@@ -26,10 +26,11 @@ main {
 }
 .movie {
   /* debug */
-  width: 100px;
-  height: 200px;
+  min-width: 200px;
+  height: 300px;
   background: lightblue;
   border:1px solid black;
+  border-radius: 10px;
   margin: 20px;
   text-align: center;
   /* fine debug */
