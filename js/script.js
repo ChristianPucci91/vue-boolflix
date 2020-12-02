@@ -9,7 +9,8 @@ var app = new Vue({
     it:'img/it.png', // bandiera per nazionalità film
     apiKey:'da0d46e7635a0896a9556496ca9aabfb',
     search:'', // v-model per cercare i film
-    movies:[] // array dei film
+    movies:[],
+    series:[] // array dei film
   },
   methods: {// andiamo a richiedere all'API tutti i film e li associamo al nostro array movies con un mounted, non appena si crea l'istanza di Vue
     filterMovie () {
@@ -22,9 +23,19 @@ var app = new Vue({
       })
       .then(risp =>{
         this.movies = risp.data.results;
+      });
+      axios.get('https://api.themoviedb.org/3/search/tv', {
+        params: {
+          api_key: this.apiKey, // apikey salvata nei parametri di data
+          query: this.search // associamo a query il valore di quello che andremo ad inserire
+        }
       })
+      .then(risp =>{
+        this.series = risp.data.results;
+      });
 
     },
+
     //Funzione per trarre un voto da una scala di 10 a 5 Milestone 2
     // Se il voto è 8 lui ritornerà 4
       getStars(vote_average) {

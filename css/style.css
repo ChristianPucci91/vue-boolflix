@@ -24,7 +24,7 @@ main {
   justify-content: center;
   align-items: center;
 }
-.movie {
+.movie,.series {
   /* debug */
   min-width: 200px;
   height: 300px;
@@ -35,13 +35,19 @@ main {
   text-align: center;
   /* fine debug */
 }
-.movie > * {
+.movie > *,
+.series > *
+ {
   margin: 10px;
 }
 
 /* REGOLE DI DEbug */
 
-.movie img {
+.movie img,
+.series img {
   width: 50px;
   border-radius: 50%;
+}
+main h1 {
+  text-align: center;
 }
