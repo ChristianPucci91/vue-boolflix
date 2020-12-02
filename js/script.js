@@ -5,6 +5,8 @@ var app = new Vue({
   el: "#root",
   data: {
     logo:'img/logo.png', // logo boolfix
+    en:'img/en.png', // bandiera per nazionalità film
+    it:'img/it.png', // bandiera per nazionalità film
     apiKey:'da0d46e7635a0896a9556496ca9aabfb',
     search:'', // v-model per cercare i film
     movies:[] // array dei film

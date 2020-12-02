@@ -38,3 +38,10 @@ main {
 .movie > * {
   margin: 10px;
 }
+
+/* REGOLE DI DEbug */
+
+.movie img {
+  width: 50px;
+  border-radius: 50%;
+}

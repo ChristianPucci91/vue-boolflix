@@ -35,8 +35,17 @@
 
          <p>{{movie.title}}</p>
          <p>{{movie.original_title}}</p>
-         <p>{{movie.original_language}}</p>
-         <i v-for="number in getStars(movie.vote_average)" class="fas fa-star"></i><i v-for="number in (5 - getStars(movie.vote_average))" class="far fa-star"></i>
+         <div class="img_lenguage">
+
+           <img :src="movie.original_language === 'en'? en : it" alt="">
+           <!-- se la lingua sarà uguale a en allora andrà a prendere il riferiemento all'img nella proprietà en altrimenti a it -->
+
+         </div>
+         <div class="vote">
+
+           <i v-for="number in getStars(movie.vote_average)" class="fas fa-star"></i><i v-for="number in (5 - getStars(movie.vote_average))" class="far fa-star"></i>
+
+         </div>
          <!-- Milestone 2 : stamperò tante stelle colorate quanto sarà il voto_average dell film ciclato  se il voto è 6 lui ritornerà 3 dalla funzione e stamperà 3 icone <i> -->
          <!-- Poi stamperò le stelle non colorate e sarà una semplice somma tra 5 che è il numero di stelle che voglio meno le stelle colorate.
          Nel caso commentato sopra se avrò 3 stelle colorate farà 5-3 = 2  e mi stamperà 2 stelle vuote. -->
