@@ -1,5 +1,4 @@
 
-const key = ''
 
 // Avvio e dichiaro vue nel container
 var app = new Vue({
@@ -7,7 +6,7 @@ var app = new Vue({
   data: {
     logo:'img/logo.png', // logo boolfix
     apiKey:'da0d46e7635a0896a9556496ca9aabfb',
-    search:'ritorno al futuro', // v-model per cercare i film 
+    search:'ritorno al futuro', // v-model per cercare i film
     movies:[] // array dei film
   },
   mounted: // andiamo a richiedere all'API tutti i film e li associamo al nostro array movies con un mounted, non appena si crea l'istanza di Vue

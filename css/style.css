@@ -16,5 +16,24 @@ header {
 }
 
 .logo img {
-  width: 200px; 
+  width: 200px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.movie {
+  /* debug */
+  width: 100px;
+  height: 200px;
+  background: lightblue;
+  border:1px solid black;
+  margin: 20px;
+  text-align: center;
+  /* fine debug */
+}
+.movie > * {
+  margin: 10px;
 }
