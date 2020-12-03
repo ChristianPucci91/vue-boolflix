@@ -38,10 +38,14 @@
         </div>
 
       </header>
-      <!-------------------->
+      <!---  FINE HEADER-------------->
       <main>
+        <!-- Titolo ad apertura pagina -->
+        <div v-if="movies.length == 0 && series.length == 0">
+          <h1>Sfoglia il catalogo per cercare Film & Serie TV!</h1>
+        </div>
 
-        <nav>
+        <nav v-else>
 
           <div class="movie" v-for="movie in movies">
 
@@ -97,7 +101,7 @@
                 <div class="img_lenguage">
 
                   <img :src="'img/' + serie.original_language +'.png'" @error="imgPlaceholder">
-                  <!-- se la lingua sarà uguale a en allora andrà a prendere il riferiemento all'img nella proprietà en altrimenti a it -->
+                  <!-- src sarà uguale alla cartella img + il valore di item.original_language, nel caso non trovi nulla ci sarà la funzione che darà un immagine prestabilita-->
 
                 </div>
                 <div class="vote">
@@ -114,16 +118,12 @@
                 <div class="overview" v-else>
                   Overview: non disponibile.
                 </div>
-                <!-- Milestone 2 : stamperò tante stelle colorate quanto sarà il voto_average dell film ciclato  se il voto è 6 lui ritornerà 3 dalla funzione e stamperà 3 icone <i> -->
-                <!-- Poi stamperò le stelle non colorate e sarà una semplice somma tra 5 che è il numero di stelle che voglio meno le stelle colorate.
-                Nel caso commentato sopra se avrò 3 stelle colorate farà 5-3 = 2  e mi stamperà 2 stelle vuote. -->
 
               </div>
 
             </div>
 
           </div>
-
 
         </nav>
 
