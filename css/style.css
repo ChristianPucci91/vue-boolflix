@@ -18,8 +18,11 @@ header {
 .logo img {
   width: 200px;
 }
-
 main {
+
+  background-color: grey;
+}
+nav {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -39,9 +42,6 @@ main {
   width: 50px;
   border-radius: 50%;
 } */
-main h1 {
-  text-align: center;
-}
 
 /* Regole on hover poster */
 .poster {

@@ -66,6 +66,6 @@ var app = new Vue({
             if (item.length > 200){
                 return item = item.slice(0,200).concat('...');
             };
-        }
+        } // funzione per accorciare il testo superati i 200 caratteri
   }
 });
