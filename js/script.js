@@ -24,10 +24,13 @@ var app = new Vue({
       .then(risp =>{
         this.movies = risp.data.results;
         this.movies.forEach((item) => {
+
+          item.overview = this.overFlow(item.overview);
+
           if (item.poster_path == null) {
-            item.poster_path = 'img/placeholder.png'
+            item.poster_path = 'img/placeholder.png';
           }else{
-            item.poster_path = `https://image.tmdb.org/t/p/w185/${item.poster_path}`;
+            item.poster_path = `https://image.tmdb.org/t/p/w342/${item.poster_path}`;
           }
         });
       //per ogni item dell'array creo il link con il codice poster_path associato al film
@@ -39,12 +42,13 @@ var app = new Vue({
         }
       })
       .then(risp =>{
+
         this.series = risp.data.results;
         this.series.forEach((item) => {
           if (item.poster_path == null) {
             item.poster_path = 'img/placeholder.png'
           }else{
-            item.poster_path = `https://image.tmdb.org/t/p/w185/${item.poster_path}`;
+            item.poster_path = `https://image.tmdb.org/t/p/w342/${item.poster_path}`;
           }
         });
       });
@@ -57,6 +61,11 @@ var app = new Vue({
       },
       imgPlaceholder:function (e) {  // quando non si trovano bandiere andrà in errore e aggiungerà questa di default
        e.target.src = "img/world.png"
-      }
+      },
+      overFlow(item) {
+            if (item.length > 200){
+                return item = item.slice(0,200).concat('...');
+            };
+        }
   }
 });
