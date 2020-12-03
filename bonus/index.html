@@ -58,17 +58,9 @@
 
               <div class="hover">
                <div class="hover_items">
-                 <div class="movie_text"
-                 v-if="movie.title != movie.original_title">
 
-                   <p>Titolo:{{movie.title}}</p>
-                   <p>Titolo originale:{{movie.original_title}}</p>
-
-                 </div>
-                 <div class="movie_text" v-else>
-                   <p>Titolo:{{movie.title}}</p>
-                 </div>
-
+                <p>Titolo:{{movie.title}}</p>
+                <p>Titolo originale:{{movie.original_title}}</p>
                 <div class="img_lenguage">
 
                   <img :src="'img/' + movie.original_language +'.png'" @error="imgPlaceholder">
@@ -108,16 +100,8 @@
               <div class="hover">
                 <div class="hover_items">
 
-                  <div class="serie_text"
-                  v-if="serie.name != serie.original_name">
-
-                    <p>Titolo:{{serie.name}}</p>
-                    <p>Titolo originale:{{serie.original_name}}</p>
-
-                  </div>
-                  <div class="serie_text" v-else>
-                    <p>Titolo:{{serie.name}}</p>
-                  </div>
+                  <p>Titolo:{{serie.name}}</p>
+                  <p>Titolo originale:{{serie.original_name}}</p>
                   <div class="img_lenguage">
 
                     <img :src="'img/' + serie.original_language +'.png'" @error="imgPlaceholder">

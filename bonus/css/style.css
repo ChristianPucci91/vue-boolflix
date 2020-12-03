@@ -1,0 +1,106 @@
+/* regole generali */
+
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+.title {
+  text-align: center;
+  padding-top:300px;
+  color:white;
+}
+
+/* Regole header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background-color: black;
+  padding:0 20px;
+}
+/* logo boolfix */
+
+.logo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 60%;
+}
+
+/* regole main */
+main {
+  height: calc(100vh - 70px);
+  background-color: #494444;
+}
+nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+  height: 100%;
+}
+.movie,.series {
+  margin: 20px;
+}
+
+/* Regole on hover poster */
+.poster {
+  position: relative;
+  width: 300px;
+  height: 450px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.poster > span {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50% ,0);
+  z-index: 1;
+  color: white;
+}
+.poster img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.poster:hover .hover{
+  display: block;
+  color:white;
+}
+.poster:hover .hover i{
+  color:yellow;
+}
+/* regole hover */
+.hover {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: black;
+}
+.hover_items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.hover_items > * {
+  font-size:20px;
+  text-align: left;
+  margin: 10px 10px;
+}
+.img_lenguage {
+  width: 30px;
+}
+.img_lenguage > img {
+  border-radius: 50%;
+}
