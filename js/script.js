@@ -13,7 +13,7 @@ var app = new Vue({
     series:[] // array dei film
   },
   methods: {// andiamo a richiedere all'API tutti i film e li associamo al nostro array movies con un mounted, non appena si crea l'istanza di Vue
-    filterMovie () {
+    filter () {
 
       axios.get('https://api.themoviedb.org/3/search/movie', {
         params: {
