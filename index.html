@@ -48,6 +48,7 @@
             <div class="poster">
 
               <img :src="movie.poster_path" alt="">
+              <span>film</span>
 
               <div class="hover">
 
@@ -82,15 +83,12 @@
             </div>
 
           </div>
-
-        </nav>
-        <nav>
-
           <div class="series" v-for="serie in series">
 
             <div class="poster">
 
               <img :src="serie.poster_path" alt="">
+              <span>TV</span>
 
               <div class="hover">
 

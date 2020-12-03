@@ -45,6 +45,9 @@ var app = new Vue({
 
         this.series = risp.data.results;
         this.series.forEach((item) => {
+
+          item.overview = this.overFlow(item.overview);
+
           if (item.poster_path == null) {
             item.poster_path = 'img/placeholder.png'
           }else{
