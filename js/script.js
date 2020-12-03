@@ -54,6 +54,7 @@ var app = new Vue({
           }
         });
       });
+      this.search='';
     },
 
     //Funzione per trarre un voto da una scala di 10 a 5 Milestone 2
