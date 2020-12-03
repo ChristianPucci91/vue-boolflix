@@ -41,7 +41,8 @@ var app = new Vue({
       getStars(vote_average) {
           return Math.ceil(vote_average / 2);
       },
-
-
+      imgPlaceholder:function (e) {  // quando non si trovano bandiere andrà in errore e aggiungerà questa di default
+       e.target.src = "img/world.png"
+      }
   }
 });

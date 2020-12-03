@@ -38,7 +38,7 @@
          <p>{{movie.original_title}}</p>
          <div class="img_lenguage">
 
-           <img :src="movie.original_language === 'en'? en : it" alt="">
+           <img :src="'img/' + movie.original_language +'.png'" @error="imgPlaceholder">
            <!-- se la lingua sarà uguale a en allora andrà a prendere il riferiemento all'img nella proprietà en altrimenti a it -->
 
          </div>
@@ -61,7 +61,7 @@
          <p>{{serie.original_name}}</p>
          <div class="img_lenguage">
 
-           <img :src="serie.original_language === 'en'? en : it" alt="">
+           <img :src="'img/' + serie.original_language +'.png'" @error="imgPlaceholder">
            <!-- se la lingua sarà uguale a en allora andrà a prendere il riferiemento all'img nella proprietà en altrimenti a it -->
 
          </div>
