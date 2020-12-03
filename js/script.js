@@ -23,6 +23,14 @@ var app = new Vue({
       })
       .then(risp =>{
         this.movies = risp.data.results;
+        this.movies.forEach((item) => {
+          if (item.poster_path == null) {
+            item.poster_path = 'img/placeholder.png'
+          }else{
+            item.poster_path = `https://image.tmdb.org/t/p/w185/${item.poster_path}`;
+          }
+        });
+      //per ogni item dell'array creo il link con il codice poster_path associato al film
       });
       axios.get('https://api.themoviedb.org/3/search/tv', {
         params: {
@@ -32,8 +40,14 @@ var app = new Vue({
       })
       .then(risp =>{
         this.series = risp.data.results;
+        this.series.forEach((item) => {
+          if (item.poster_path == null) {
+            item.poster_path = 'img/placeholder.png'
+          }else{
+            item.poster_path = `https://image.tmdb.org/t/p/w185/${item.poster_path}`;
+          }
+        });
       });
-
     },
 
     //Funzione per trarre un voto da una scala di 10 a 5 Milestone 2

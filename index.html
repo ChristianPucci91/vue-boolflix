@@ -33,7 +33,7 @@
       <main>
 
        <div class="movie" v-for="movie in movies">
-          <h1>FILM</h1> <!--debug-->
+         <img :src="movie.poster_path" alt="">
          <p>{{movie.title}}</p>
          <p>{{movie.original_title}}</p>
          <div class="img_lenguage">
@@ -56,7 +56,7 @@
       <main>
 
        <div class="series" v-for="serie in series">
-       <h1>SERIE</h1> <!--debug-->
+       <img :src="serie.poster_path" alt="">
          <p>{{serie.name}}</p>
          <p>{{serie.original_name}}</p>
          <div class="img_lenguage">
