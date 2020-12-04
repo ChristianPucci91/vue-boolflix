@@ -43,11 +43,8 @@
       <!---  FINE HEADER-------------->
       <main>
         <!-- Titolo ad apertura pagina -->
-        <div v-if="movies.length == 0 && series.length == 0" class="title">
-          <h1>Sfoglia il catalogo per cercare Film & Serie TV!</h1>
-        </div>
 
-        <nav v-else>
+        <nav>
 
           <div class="movie" v-for="movie in movies">
 
@@ -146,7 +143,13 @@
 
           </div> <!-- Fine div series -->
 
+          <div class="title">
+            <h1>{{messaggio}}</h1>
+          </div>
+
         </nav> <!-- Fine nav -->
+
+
 
       </main> <!-- Fine main -->
 

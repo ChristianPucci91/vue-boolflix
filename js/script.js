@@ -8,7 +8,8 @@ var app = new Vue({
     apiKey:'da0d46e7635a0896a9556496ca9aabfb',
     search:'', // v-model per cercare i film
     movies:[],// array dei film
-    series:[] // array delle serie tv
+    series:[], // array delle serie tv
+    messaggio:''
   },
   methods: {// andiamo a richiedere all'API tutti i film e li associamo al nostro array movies con un mounted, non appena si crea l'istanza di Vue
     filter () {

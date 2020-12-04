@@ -8,7 +8,9 @@ var app = new Vue({
     apiKey:'da0d46e7635a0896a9556496ca9aabfb',
     search:'', // v-model per cercare i film
     movies:[],// array dei film
-    series:[] // array delle serie tv
+    series:[], // array delle serie tv
+    moviesGenre:[], // array generi film
+    seriesGenre:[] // array generi Serie tv
   },
   methods: {// andiamo a richiedere all'API tutti i film e li associamo al nostro array movies con un mounted, non appena si crea l'istanza di Vue
     filter () {
@@ -56,7 +58,17 @@ var app = new Vue({
       });
       this.search='';
     },
-
+    //// TEST BONUS MILESTONE 5
+    filterCastGenre(){
+      axios.get('https://api.themoviedb.org/3/movie/' + id + '&append_to_response=credits', {
+        params:{
+          api_key:this.apiKey
+        }
+      })
+      .then(risp =>{
+       console.log(risp);
+      });
+    }, // TEST BONUS MILESTONE 5
     //Funzione per trarre un voto da una scala di 10 a 5 Milestone 2
     // Se il voto è 8 lui ritornerà 4
     getStars(vote_average) {
@@ -69,6 +81,6 @@ var app = new Vue({
       if (item.length > 200){
         return item = item.slice(0,200).concat('...');
       };
-    } // funzione per accorciare il testo superati i 200 caratteri
+    }, // funzione per accorciare il testo superati i 200 caratteri
   }
 });
