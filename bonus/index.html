@@ -48,8 +48,10 @@
         </div>
 
         <nav v-else>
-
-          <div class="movie" v-for="movie in movies">
+        <!--- la funzione verrà richiamata ogni volta che il mouse entra in questo elemento-->
+          <div
+          class="movie"
+          v-for="movie in movies" @mouseenter="filterCastGenre(movie.id)">
 
             <div class="poster">
 
@@ -75,6 +77,10 @@
                   <i v-for="number in (5 - getStars(movie.vote_average))" class="far fa-star"></i>
 
                 </div>
+                <!-- //MILESTONE 5 -->
+                  <span v-for="actor in actorsMovies">{{actor.name}}, </span>
+                  <span v-for="genre in genreMovies">{{genre.name}}</span>
+                <!-- // MILESTONE 5 -->
                 <div class="overview" v-if="movie.overview">
                   Overview: {{movie.overview}}
                 </div>
@@ -90,7 +96,7 @@
             </div> <!-- Fine div poster -->
 
           </div> <!-- Fine div movie -->
-          <div class="series" v-for="serie in series">
+          <div class="series" v-for="serie in series" @mouseenter="filterCastGenre(serie.id)">
 
             <div class="poster">
 
@@ -116,6 +122,7 @@
                     <i v-for="number in (5 - getStars(serie.vote_average))" class="far fa-star"></i>
 
                   </div>
+                  <span v-for="actor in actorsSeries">{{actor.name}}, </span>
                   <div class="overview" v-if="serie.overview">
                     Overview: {{serie.overview}}
                   </div>
