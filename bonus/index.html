@@ -26,12 +26,12 @@
           <img :src="logo" alt="">
         </div>
 
-        <div> <!-- search bar -->
+        <div class="search"> <!-- search bar -->
           <button
             type="button"
             name="button"
-            @click="filterMovie()">
-            Cerca
+            @click="filter()">
+            <i class="fas fa-search"></i>
           </button>
           <input
            type="text"
@@ -123,6 +123,7 @@
 
                   </div>
                   <span v-for="actor in actorsSeries">{{actor.name}}, </span>
+                  <span v-for="genre in genreSeries">{{genre.name}}</span>
                   <div class="overview" v-if="serie.overview">
                     Overview: {{serie.overview}}
                   </div>

@@ -4,7 +4,7 @@
 var app = new Vue({
   el: "#root",
   data: {
-    logo:'img/logo.png', // logo boolfix
+    logo:'img/logo0.png', // logo boolfix
     apiKey:'da0d46e7635a0896a9556496ca9aabfb',
     search:'', // v-model per cercare i film
     movies:[],// array dei film
@@ -69,13 +69,15 @@ var app = new Vue({
         for (let i = 0; i < 5; i++) {
           this.actorsMovies.push(risp.data.credits.cast[i]);
        }
-       this.genreMovies.push(risp.data.genres);
+       this.genreMovies = risp.data.genres;
+       console.log(this.genreMovies);
       });
       axios.get('https://api.themoviedb.org/3/tv/' + id + '?api_key=' + this.apiKey + '&append_to_response=credits').then(risp =>{
         // vogliamo solo i primi 5 attori quindi pushamo nell'array i primi 5 risultati
         for (let i = 0; i < 5; i++) {
           this.actorsSeries.push(risp.data.credits.cast[i]);
        }
+       this.genreSeries = risp.data.genres;
       });
     }, // TEST BONUS MILESTONE 5
 
