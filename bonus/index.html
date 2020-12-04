@@ -58,7 +58,7 @@
             <div class="poster">
 
               <img :src="movie.poster_path" alt="">
-              <span>film</span>
+              <p>Film</p>
 
               <div class="hover">
                <div class="hover_items">
@@ -112,37 +112,49 @@
             <div class="poster">
 
               <img :src="serie.poster_path" alt="">
-              <span>Serie TV</span>
+              <p>Serie TV</p>
 
               <div class="hover">
                 <div class="hover_items">
 
-                  <p>Titolo:{{serie.name}}</p>
-                  <p>Titolo originale:{{serie.original_name}}</p>
-                  <div class="img_lenguage">
+                 <p class="title_1">{{serie.name}}</p>
+                 <p class="title_2">{{serie.original_name}}</p>
 
-                    <img :src="'img/' + serie.original_language +'.png'" @error="imgPlaceholder">
-                    <!-- src sarà uguale alla cartella img + il valore di item.original_language, nel caso non trovi nulla ci sarà la funzione che darà un immagine prestabilita-->
+                 <!-- //MILESTONE 5 -->
+                 <div class="actors">
+                   <span v-for="actor in actorsSeries">{{actor.name}}, </span>
+                 </div>
+                 <!-- // MILESTONE 5 -->
+                 <div class="overview" v-if="serie.overview">
+                    {{serie.overview}}
+                 </div>
+                 <div class="overview" v-else>
+                   Overview: non disponibile.
+                 </div>
 
-                  </div>
-                  <div class="vote">
+                 <div class="bottom">
 
-                    Voto:
-                    <i v-for="number in getStars(serie.vote_average)"
-                    class="fas fa-star"></i>
-                    <i v-for="number in (5 - getStars(serie.vote_average))" class="far fa-star"></i>
+                   <div class="img_lenguage">
 
-                  </div>
-                  <span v-for="actor in actorsSeries">{{actor.name}}, </span>
-                  <span v-for="genre in genreSeries">{{genre.name}}</span>
-                  <div class="overview" v-if="serie.overview">
-                    Overview: {{serie.overview}}
-                  </div>
-                  <div class="overview" v-else>
-                    Overview: non disponibile.
-                  </div>
+                     <img :src="'img/' + serie.original_language +'.png'" @error="imgPlaceholder">
+                     <!-- se la lingua sarà uguale a en allora andrà a prendere il riferiemento all'img nella proprietà en altrimenti a it -->
 
-                </div> <!-- Fine div hover_items -->
+                   </div>
+                   <div class="vote">
+
+                     Voto:
+                     <i v-for="number in getStars(serie.vote_average)"
+                     class="fas fa-star"></i>
+                     <i v-for="number in (5 - getStars(serie.vote_average))" class="far fa-star"></i>
+
+                   </div>
+
+                 </div>
+                 <div class="genre">
+                   <span v-for="genre in genreSeries">{{genre.name}} </span>
+                 </div>
+
+               </div> <!-- Fine div hover_items -->
               </div> <!-- Fine div hover -->
 
             </div> <!-- Fine div poster -->
