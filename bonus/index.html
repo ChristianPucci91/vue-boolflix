@@ -28,6 +28,49 @@
           <img :src="logo" alt="">
         </div>
 
+        <div
+        class="navbar" @click="showDropFilm =! showDropFilm">
+          <p>Film</p>
+          <div class="dropdown":class="{active : showDropFilm}">
+           <ul>
+
+             <li @click="bygenreFilm(28)">Action</li>
+             <li @click="bygenreFilm(12)">Adventure</li>
+             <li @click="bygenreFilm(16)">Animation</li>
+             <li @click="bygenreFilm(35)">Comedy</li>
+             <li @click="bygenreFilm(80)">Crime</li>
+             <li @click="bygenreFilm(99)">Documentary</li>
+             <li @click="bygenreFilm(28)">Action</li>
+             <li @click="bygenreFilm(28)">Home</li>
+             <li @click="bygenreFilm(28)">Action</li>
+             <li @click="bygenreFilm(28)">Home</li>
+             <li @click="bygenreFilm(28)">Action</li>
+             <li @click="bygenreFilm(28)">Home</li>
+             <li @click="bygenreFilm(28)">Action</li>
+             <li @click="bygenreFilm(28)">Home</li>
+             <li @click="bygenreFilm(28)">Action</li>
+             <li @click="bygenreFilm(28)">Home</li>
+             <li @click="bygenreFilm(28)">Action</li>
+             <li @click="bygenreFilm(28)">Home</li>
+
+
+           </ul>
+          </div>
+        </div>
+        <div
+        class="navbar" @click="showDropTv =! showDropTv">
+          <p>Serie tv</p>
+          <div class="dropdown":class="{active : showDropTv}">
+           <ul>
+             <li>Ciao</li>
+             <li>Home</li>
+             <li>Home</li>
+             <li>Home</li>
+             <li>Home</li>
+           </ul>
+          </div>
+        </div>
+
         <div class="search"> <!-- search bar -->
           <button
             type="button"
@@ -42,29 +85,28 @@
         </div>
 
       </header>
+
       <!---  FINE HEADER-------------->
       <main>
         <!-- Titolo ad apertura pagina -->
-        <div v-if="movies.length == 0 && series.length == 0" class="title">
-          <h1>Sfoglia il catalogo per cercare Film & Serie TV!</h1>
-        </div>
 
-        <nav v-else>
+        <nav v-if="(allFilmTv.length != 0 ) ">
         <!--- la funzione verrà richiamata ogni volta che il mouse entra in questo elemento-->
           <div
           class="movie"
-          v-for="movie in movies" @mouseenter="filterCastGenre(movie.id)">
+          v-for="movie in allFilmTv" @mouseenter="filterCastGenre(movie.id)">
 
             <div class="poster">
 
-              <img :src="movie.poster_path" alt="">
-              <p>Film</p>
+              <img :src="movie.poster_path" alt="" >
+              <p v-if="movie.title !== undefined">Film</p>
+              <p v-else>Serie TV</p>
 
               <div class="hover">
                <div class="hover_items">
 
-                <p class="title_1">{{movie.title}}</p>
-                <p class="title_2">{{movie.original_title}}</p>
+                <p class="title_1">{{movie.title || movie.name}}</p>
+                <p v-if="movie.title != movie.original_title || movie.name != movie.original_name" class="title_2">{{movie.original_title || movie.original_name}}</p>
 
                 <!-- //MILESTONE 5 -->
                 <div class="actors">
@@ -107,61 +149,12 @@
             </div> <!-- Fine div poster -->
 
           </div> <!-- Fine div movie -->
-          <div class="series" v-for="serie in series" @mouseenter="filterCastGenre(serie.id)">
 
-            <div class="poster">
-
-              <img :src="serie.poster_path" alt="">
-              <p>Serie TV</p>
-
-              <div class="hover">
-                <div class="hover_items">
-
-                 <p class="title_1">{{serie.name}}</p>
-                 <p class="title_2">{{serie.original_name}}</p>
-
-                 <!-- //MILESTONE 5 -->
-                 <div class="actors">
-                   <span v-for="actor in actorsSeries">{{actor.name}}, </span>
-                 </div>
-                 <!-- // MILESTONE 5 -->
-                 <div class="overview" v-if="serie.overview">
-                    {{serie.overview}}
-                 </div>
-                 <div class="overview" v-else>
-                   Overview: non disponibile.
-                 </div>
-
-                 <div class="bottom">
-
-                   <div class="img_lenguage">
-
-                     <img :src="'img/' + serie.original_language +'.png'" @error="imgPlaceholder">
-                     <!-- se la lingua sarà uguale a en allora andrà a prendere il riferiemento all'img nella proprietà en altrimenti a it -->
-
-                   </div>
-                   <div class="vote">
-
-                     Voto:
-                     <i v-for="number in getStars(serie.vote_average)"
-                     class="fas fa-star"></i>
-                     <i v-for="number in (5 - getStars(serie.vote_average))" class="far fa-star"></i>
-
-                   </div>
-
-                 </div>
-                 <div class="genre">
-                   <span v-for="genre in genreSeries">{{genre.name}} </span>
-                 </div>
-
-               </div> <!-- Fine div hover_items -->
-              </div> <!-- Fine div hover -->
-
-            </div> <!-- Fine div poster -->
-
-          </div> <!-- Fine div series -->
 
         </nav> <!-- Fine nav -->
+        <div v-else class="title">
+          <h1>Nessun risultato trovato dalla tua ricerca!</h1>
+        </div>
 
       </main> <!-- Fine main -->
 
