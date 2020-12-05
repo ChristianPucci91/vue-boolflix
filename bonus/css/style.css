@@ -58,8 +58,11 @@ header {
 /* Navbar */
 .navbar {
   color:#fff;
-  width: 100px;
+  width: auto;
   text-align: center;
+}
+.navbar > p{
+  font-family: sans-serif;
 }
 .dropdown {
   position: absolute;
@@ -82,9 +85,19 @@ header {
 .dropdown > ul > li {
   width: calc(100% / 9);
   margin:4px 0;
+  font-family: sans-serif;
+}
+.dropdown.tv > ul > li {
+  width: calc(100% / 8);
+  margin:4px 0;
+  font-family: sans-serif;
 }
 .active {
   display: block;
+}
+.border {
+  border-bottom:3px solid #dc1a28;
+  padding-bottom: 2px;
 }
 
 /* logo boolfix */
