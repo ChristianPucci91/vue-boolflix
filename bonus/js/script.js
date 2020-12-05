@@ -13,7 +13,8 @@ var app = new Vue({
     actorsSeries:[], // array attori Serie Tv
     allFilmTv:[], //array unificato
     showDropFilm:false,
-    showDropTv:false
+    showDropTv:false,
+    showProfile:false,
   },
   mounted: function (){
    this.sortPopularity();
@@ -139,6 +140,6 @@ var app = new Vue({
           }
         });
       })
-    }
+    },
   }
 });

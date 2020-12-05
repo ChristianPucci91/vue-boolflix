@@ -26,66 +26,67 @@
 
         <div class="logo"> <!-- logo boolfix -->
           <img :src="logo" alt="">
-        </div>
+          <div
+          class="navbar"
+          @click="showDropFilm =! showDropFilm"
+          :class="{'border' : showDropFilm}" >
+            <p >Film</p>
+            <div class="dropdown":class="{'active' : showDropFilm}">
+             <ul>
 
-        <div
-        class="navbar"
-        @click="showDropFilm =! showDropFilm"
-        :class="{'border' : showDropFilm}" >
-          <p >Film</p>
-          <div class="dropdown":class="{'active' : showDropFilm}">
-           <ul>
-
-             <li @click="bygenreFilm(28)">Action</li>
-             <li @click="bygenreFilm(12)">Adventure</li>
-             <li @click="bygenreFilm(16)">Animation</li>
-             <li @click="bygenreFilm(35)">Comedy</li>
-             <li @click="bygenreFilm(80)">Crime</li>
-             <li @click="bygenreFilm(99)">Documentary</li>
-             <li @click="bygenreFilm(18)">Drama</li>
-             <li @click="bygenreFilm(10751)">Family</li>
-             <li @click="bygenreFilm(14)">Fantasy</li>
-             <li @click="bygenreFilm(36)">History</li>
-             <li @click="bygenreFilm(27)">Horror</li>
-             <li @click="bygenreFilm(10402)">Music</li>
-             <li @click="bygenreFilm(9648)">Mystery</li>
-             <li @click="bygenreFilm(10749)">Romance</li>
-             <li @click="bygenreFilm(878)">Science Fiction</li>
-             <li @click="bygenreFilm(10770)">Tv Movie</li>
-             <li @click="bygenreFilm(53)">Thriller</li>
-             <li @click="bygenreFilm(10752)">War</li>
+               <li @click="bygenreFilm(28)">Action</li>
+               <li @click="bygenreFilm(12)">Adventure</li>
+               <li @click="bygenreFilm(16)">Animation</li>
+               <li @click="bygenreFilm(35)">Comedy</li>
+               <li @click="bygenreFilm(80)">Crime</li>
+               <li @click="bygenreFilm(99)">Documentary</li>
+               <li @click="bygenreFilm(18)">Drama</li>
+               <li @click="bygenreFilm(10751)">Family</li>
+               <li @click="bygenreFilm(14)">Fantasy</li>
+               <li @click="bygenreFilm(36)">History</li>
+               <li @click="bygenreFilm(27)">Horror</li>
+               <li @click="bygenreFilm(10402)">Music</li>
+               <li @click="bygenreFilm(9648)">Mystery</li>
+               <li @click="bygenreFilm(10749)">Romance</li>
+               <li @click="bygenreFilm(878)">Science Fiction</li>
+               <li @click="bygenreFilm(10770)">Tv Movie</li>
+               <li @click="bygenreFilm(53)">Thriller</li>
+               <li @click="bygenreFilm(10752)">War</li>
 
 
-           </ul>
+             </ul>
+            </div>
+          </div>
+          <div
+          class="navbar"
+          @click="showDropTv =! showDropTv"
+          :class="{'border' : showDropTv}">
+            <p>Serie tv</p>
+            <div class="dropdown tv":class="{active : showDropTv}">
+             <ul>
+               <li @click="bygenreTv(10759)">Action</li>
+               <li @click="bygenreTv(16)">Animation</li>
+               <li @click="bygenreTv(16)">Animation</li>
+               <li @click="bygenreTv(35)">Comedy</li>
+               <li @click="bygenreTv(80)">Crime</li>
+               <li @click="bygenreTv(99)">Documentary</li>
+               <li @click="bygenreTv(18)">Drama</li>
+               <li @click="bygenreTv(10751)">Family</li>
+               <li @click="bygenreTv(10762)">Kids</li>
+               <li @click="bygenreTv(10763)">News</li>
+               <li @click="bygenreTv(10764)">Reality</li>
+               <li @click="bygenreTv(10765)">Fantasy</li>
+               <li @click="bygenreTv(9648)">Mystery</li>
+               <li @click="bygenreTv(10766)">Soap</li>
+               <li @click="bygenreTv(10767)">Talk</li>
+               <li @click="bygenreTv(10768)">War & Politics</li>
+             </ul>
+            </div>
           </div>
         </div>
-        <div
-        class="navbar"
-        @click="showDropTv =! showDropTv"
-        :class="{'border' : showDropTv}">
-          <p>Serie tv</p>
-          <div class="dropdown tv":class="{active : showDropTv}">
-           <ul>
-             <li @click="bygenreTv(10759)">Action</li>
-             <li @click="bygenreTv(16)">Animation</li>
-             <li @click="bygenreTv(16)">Animation</li>
-             <li @click="bygenreTv(35)">Comedy</li>
-             <li @click="bygenreTv(80)">Crime</li>
-             <li @click="bygenreTv(99)">Documentary</li>
-             <li @click="bygenreTv(18)">Drama</li>
-             <li @click="bygenreTv(10751)">Family</li>
-             <li @click="bygenreTv(10762)">Kids</li>
-             <li @click="bygenreTv(10763)">News</li>
-             <li @click="bygenreTv(10764)">Reality</li>
-             <li @click="bygenreTv(10765)">Fantasy</li>
-             <li @click="bygenreTv(9648)">Mystery</li>
-             <li @click="bygenreTv(10766)">Soap</li>
-             <li @click="bygenreTv(10767)">Talk</li>
-             <li @click="bygenreTv(10768)">War & Politics</li>
-           </ul>
-          </div>
-        </div>
 
+          <!-- dropdown per scelta genere tra film e serie tv -->
+    
         <div class="search"> <!-- search bar -->
           <button
             type="button"
@@ -105,11 +106,11 @@
       <main>
         <!-- Titolo ad apertura pagina -->
 
-        <nav v-if="(allFilmTv.length != 0 ) ">
+        <nav v-if="(allFilmTv.length != 0 )">
         <!--- la funzione verrà richiamata ogni volta che il mouse entra in questo elemento-->
           <div
           class="movie"
-          v-for="movie in allFilmTv" @mouseenter="filterCastGenre(movie.id)">
+          v-for="(movie,i) in allFilmTv" @mouseenter="filterCastGenre(movie.id)">
 
             <div class="poster">
 
@@ -165,8 +166,8 @@
 
           </div> <!-- Fine div movie -->
 
-
         </nav> <!-- Fine nav -->
+
         <div v-else class="title">
           <h1>Nessun risultato trovato dalla tua ricerca!</h1>
         </div>
