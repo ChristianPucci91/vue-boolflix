@@ -235,6 +235,7 @@ nav > div.series > div.poster:hover{
 .genre {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 .genre span{
@@ -244,13 +245,10 @@ nav > div.series > div.poster:hover{
   color:#fff;
   margin: 0px 10px;
   font-weight: bold;
-  border: 1px solid #dc1a28;
-  border-radius: 2px;
   padding: 3px;
 }
 .genre > span:hover {
-  background-color:#dc1a28;
-  color:#fff;
+  color:#dc1a28;
   cursor: pointer;
 }
 /* regole hover */

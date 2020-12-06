@@ -28,7 +28,7 @@
           <img :src="logo" alt="">
           <div
           class="navbar"
-          @click="showDropFilm =! showDropFilm"
+          @click="dropFilm()"
           :class="{'border' : showDropFilm}" >
             <p >Film</p>
             <div class="dropdown":class="{'active' : showDropFilm}" onload="showDropTv = false">
@@ -53,17 +53,17 @@
                <li @click="bygenreFilm(53)">Thriller</li>
                <li @click="bygenreFilm(10752)">War</li>
 
-
              </ul>
             </div>
           </div>
           <div
           class="navbar"
-          @click="showDropTv =! showDropTv"
+          @click="dropTv()"
           :class="{'border' : showDropTv}">
             <p>Serie tv</p>
             <div class="dropdown tv":class="{active : showDropTv}">
              <ul>
+
                <li @click="bygenreTv(10759)">Action</li>
                <li @click="bygenreTv(16)">Animation</li>
                <li @click="bygenreTv(37)">Western</li>
@@ -80,8 +80,15 @@
                <li @click="bygenreTv(10766)">Soap</li>
                <li @click="bygenreTv(10767)">Talk</li>
                <li @click="bygenreTv(10768)">War & Politics</li>
+
              </ul>
             </div>
+          </div>
+          <div
+          class="navbar">
+
+            <p>Preferiti</p>
+
           </div>
         </div>
 
@@ -157,8 +164,11 @@
                   </div>
 
                 </div>
-                <div class="genre">
-                  <span v-for="genre in genreMovies">{{genre.name}} </span>
+                <div v-if="movie.title !== undefined" class="genre">
+                  <span @click="bygenreFilm(genre.id)" v-for="genre in genreMovies">{{genre.name}} </span>
+                </div>
+                <div v-else class="genre">
+                  <span @click="bygenreTv(genre.id)" v-for="genre in genreSeries">{{genre.name}} </span>
                 </div>
 
               </div> <!-- Fine div hover_items -->

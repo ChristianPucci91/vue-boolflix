@@ -12,6 +12,7 @@ var app = new Vue({
     actorsMovies:[], // array attori film
     actorsSeries:[], // array attori Serie Tv
     allFilmTv:[], //array unificato
+    preferiti:[],
     showDropFilm:false,
     showDropTv:false,
     showProfile:false,
@@ -108,6 +109,8 @@ var app = new Vue({
       }).then(risp =>{
         this.allFilmTv = [...this.allFilmTv,...risp.data.results]
         this.allFilmTv.forEach((item) => {
+
+          item.overview = this.overFlow(item.overview);
 
           if (item.poster_path == null) {
             item.poster_path = 'img/placeholder.png';
@@ -222,5 +225,14 @@ var app = new Vue({
          break;
        }
     },
+    dropFilm(){ // funzione per il dropdown
+      this.showDropFilm = !this.showDropFilm;
+      this.showDropTv = false;
+    },
+    dropTv(){
+      this.showDropTv = !this.showDropTv;
+      this.showDropFilm = false;
+    },
+
   }
 });
