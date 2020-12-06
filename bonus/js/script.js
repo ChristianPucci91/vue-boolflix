@@ -5,7 +5,7 @@ var app = new Vue({
   el: "#root",
   data: {
     logo:'img/logo0.png', // logo boolfix
-    apiKey:'da0d46e7635a0896a9556496ca9aabfb',
+    apiKey:'f1ec21274d82859fd9fa8b0300e9a3b5',
     search:'', // v-model per cercare i film
     genreMovies:[], // array generi film
     genreSeries:[], // array generi Serie Tv
@@ -15,6 +15,7 @@ var app = new Vue({
     showDropFilm:false,
     showDropTv:false,
     showProfile:false,
+    title:'Film & Serie TV del momento'
   },
   mounted: function (){
    this.sortPopularity();
@@ -51,6 +52,9 @@ var app = new Vue({
           }
         });
       });
+      if (this.search != '') {
+        this.title = this.search;
+      }
       this.search='';
     },
     //// Funzione per filtrare attori e generi MILESTONE 5
@@ -119,6 +123,8 @@ var app = new Vue({
         this.allFilmTv = risp.data.results;
         this.allFilmTv.forEach((item) => {
 
+          item.overview = this.overFlow(item.overview);
+
           if (item.poster_path == null) {
             item.poster_path = 'img/placeholder.png';
           }else{
@@ -126,6 +132,44 @@ var app = new Vue({
           }
         });
       })
+      switch (id) { // controllo per far visualizzare all'utente quale categoria ha scelto
+       case 28: this.title = 'Film - Action'
+         break;
+       case 12: this.title = 'Film - Adventure'
+         break;
+       case 16: this.title = 'Film - Animation'
+         break;
+       case 35: this.title = 'Film - Comedy'
+         break;
+       case 80: this.title = 'Film - Crime'
+         break;
+       case 99: this.title = 'Film - Documentary'
+         break;
+       case 18: this.title = 'Film - Drama'
+         break;
+       case 10751: this.title = 'Film - Family'
+         break;
+       case 14: this.title = 'Film - Fantasy'
+         break;
+       case 36: this.title = 'Film - History'
+         break;
+       case 27: this.title = 'Film - Horror'
+         break;
+       case 10402: this.title = 'Film - Music'
+         break;
+       case 9648: this.title = 'Film - Mystery'
+         break;
+       case 10749: this.title = 'Film - Romance'
+         break;
+       case 878: this.title = 'Film - Science Fiction'
+         break;
+       case 10770: this.title = 'Film - Tv Movie'
+         break;
+       case 53: this.title = 'Film - Thriller'
+         break;
+       case 10752: this.title = 'Film - War & Politics'
+         break;
+       }
     },
     bygenreTv(id){
 
@@ -133,6 +177,8 @@ var app = new Vue({
         this.allFilmTv = risp.data.results;
         this.allFilmTv.forEach((item) => {
 
+          item.overview = this.overFlow(item.overview);
+
           if (item.poster_path == null) {
             item.poster_path = 'img/placeholder.png';
           }else{
@@ -140,6 +186,41 @@ var app = new Vue({
           }
         });
       })
+
+      switch (id) {
+       case 10759: this.title = 'Serie TV - Action'
+         break;
+       case 16: this.title = 'Serie TV - Animation'
+         break;
+       case 37: this.title = 'Serie TV - Western'
+         break;
+       case 35: this.title = 'Serie TV - Comedy'
+         break;
+       case 80: this.title = 'Serie TV - Crime'
+         break;
+       case 99: this.title = 'Serie TV - Documentary'
+         break;
+       case 18: this.title = 'Serie TV - Drama'
+         break;
+       case 10751: this.title = 'Serie TV - Family'
+         break;
+       case 10762: this.title = 'Serie TV - Kids'
+         break;
+       case 10763: this.title = 'Serie TV - News'
+         break;
+       case 10764: this.title = 'Serie TV - Reality'
+         break;
+       case 10765: this.title = 'Serie TV - Fantasy'
+         break;
+       case 9648: this.title = 'Serie TV - Mystery'
+         break;
+       case 10766: this.title = 'Serie TV - Soap'
+         break;
+       case 10767: this.title = 'Serie TV - Talk'
+         break;
+       case 10768: this.title = 'Serie TV - War & Politics'
+         break;
+       }
     },
   }
 });

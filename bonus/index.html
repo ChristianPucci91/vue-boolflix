@@ -31,7 +31,7 @@
           @click="showDropFilm =! showDropFilm"
           :class="{'border' : showDropFilm}" >
             <p >Film</p>
-            <div class="dropdown":class="{'active' : showDropFilm}">
+            <div class="dropdown":class="{'active' : showDropFilm}" onload="showDropTv = false">
              <ul>
 
                <li @click="bygenreFilm(28)">Action</li>
@@ -66,7 +66,7 @@
              <ul>
                <li @click="bygenreTv(10759)">Action</li>
                <li @click="bygenreTv(16)">Animation</li>
-               <li @click="bygenreTv(16)">Animation</li>
+               <li @click="bygenreTv(37)">Western</li>
                <li @click="bygenreTv(35)">Comedy</li>
                <li @click="bygenreTv(80)">Crime</li>
                <li @click="bygenreTv(99)">Documentary</li>
@@ -86,7 +86,7 @@
         </div>
 
           <!-- dropdown per scelta genere tra film e serie tv -->
-    
+
         <div class="search"> <!-- search bar -->
           <button
             type="button"
@@ -104,6 +104,7 @@
 
       <!---  FINE HEADER-------------->
       <main>
+        <h1 class="show_genre" :class="{hide:allFilmTv.length == 0}">{{title}}</h1>
         <!-- Titolo ad apertura pagina -->
 
         <nav v-if="(allFilmTv.length != 0 )">

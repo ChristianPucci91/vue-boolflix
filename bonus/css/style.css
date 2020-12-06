@@ -12,6 +12,13 @@
   padding-top:300px;
   color:white;
 }
+.show_genre{
+  color:#fff;
+  margin-left: 25px;
+  position: absolute;
+  top:-40px;
+  font-size: 25px;
+}
 body{
   background-color: #141414;
 }
@@ -74,8 +81,10 @@ header > i {
   top:90px;
   display:none;
   width: 100%;
-  height: 20px;
+  height: 55px;
   left:0;
+  background: #141414;
+  z-index: 10;
 }
 .dropdown > ul {
   display: flex;
@@ -89,12 +98,10 @@ header > i {
 }
 .dropdown > ul > li {
   width: calc(100% / 9);
-  margin:4px 0;
   font-family: sans-serif;
 }
 .dropdown.tv > ul > li {
   width: calc(100% / 8);
-  margin:4px 0;
   font-family: sans-serif;
 }
 .active {
@@ -269,57 +276,3 @@ nav > div.series > div.poster:hover{
 .img_lenguage > img {
   border-radius: 50%;
 }
-
-/* <div class="series" v-for="serie in allFilmTv" @mouseenter="filterCastGenre(serie.id)">
-
-  <div class="poster">
-
-    <img :src="serie.poster_path" alt="">
-    <p>Serie TV</p>
-
-    <div class="hover">
-      <div class="hover_items">
-
-       <p class="title_1">{{serie.name}}</p>
-       <p class="title_2">{{serie.original_name}}</p>
-
-       <!-- //MILESTONE 5 -->
-       <div class="actors">
-         <span v-for="actor in actorsSeries">{{actor.name}}, </span>
-       </div>
-       <!-- // MILESTONE 5 -->
-       <div class="overview" v-if="serie.overview">
-          {{serie.overview}}
-       </div>
-       <div class="overview" v-else>
-         Overview: non disponibile.
-       </div>
-
-       <div class="bottom">
-
-         <div class="img_lenguage">
-
-           <img :src="'img/' + serie.original_language +'.png'" @error="imgPlaceholder">
-           <!-- se la lingua sarà uguale a en allora andrà a prendere il riferiemento all'img nella proprietà en altrimenti a it -->
-
-         </div>
-         <div class="vote">
-
-           Voto:
-           <i v-for="number in getStars(serie.vote_average)"
-           class="fas fa-star"></i>
-           <i v-for="number in (5 - getStars(serie.vote_average))" class="far fa-star"></i>
-
-         </div>
-
-       </div>
-       <div class="genre">
-         <span v-for="genre in genreSeries">{{genre.name}} </span>
-       </div>
-
-     </div> <!-- Fine div hover_items -->
-    </div> <!-- Fine div hover -->
-
-  </div> <!-- Fine div poster -->
-
-</div> <!-- Fine div series --> */
