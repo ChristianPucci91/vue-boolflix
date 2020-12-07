@@ -24,7 +24,6 @@ var app = new Vue({
   methods: {
 
     filter () { // funzione per filtare film & serie tv a seconda dell'input inserito
-      this.allFilmTv = []
       axios.get('https://api.themoviedb.org/3/search/movie', {
         params: {
           api_key: this.apiKey, // apikey salvata nei parametri di data
@@ -238,12 +237,10 @@ var app = new Vue({
       this.showDropFilm = false;
     },
     nextPage(){  // MILESTONE EXTRA NEXT & PREV PAGE
-      this.allFilmTv = [];
       this.page++;
       this.filter();
     },
     prevPage(){ // MILESTONE EXTRA NEXT & PREV PAGE
-      this.allFilmTv = [];
       this.page--;
       this.filter();
     }
