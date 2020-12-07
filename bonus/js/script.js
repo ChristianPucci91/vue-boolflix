@@ -1,5 +1,4 @@
 
-
 // Avvio e dichiaro vue nel container
 var app = new Vue({
   el: "#root",
@@ -25,7 +24,7 @@ var app = new Vue({
   methods: {
 
     filter () { // funzione per filtare film & serie tv a seconda dell'input inserito
-
+      this.allFilmTv = []
       axios.get('https://api.themoviedb.org/3/search/movie', {
         params: {
           api_key: this.apiKey, // apikey salvata nei parametri di data
