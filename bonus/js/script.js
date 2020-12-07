@@ -12,32 +12,37 @@ var app = new Vue({
     actorsMovies:[], // array attori film
     actorsSeries:[], // array attori Serie Tv
     allFilmTv:[], //array unificato
-    preferiti:[],
-    showDropFilm:false,
-    showDropTv:false,
-    showProfile:false,
-    title:'Film & Serie TV del momento'
+    showDropFilm:false, // dropdown menu film
+    showDropTv:false, // dropdown menu serie
+    showProfile:false, // proprietà da testare
+    title:'Film & Serie TV del momento', // titolo per far visualizzare cosa si è cliccato
+    page:1, // MILESTONE cambio pagina
+    totalPages:'' // totale delle pagine a seconda della ricerca
   },
   mounted: function (){
-   this.sortPopularity();
+   this.sortPopularity(); // facciamo visualizzare subito all'utente i film & serie più popolari
   },
-  methods: {// andiamo a richiedere all'API tutti i film e li associamo al nostro array movies con un mounted, non appena si crea l'istanza di Vue
-    filter () {
+  methods: {
+
+    filter () { // funzione per filtare film & serie tv a seconda dell'input inserito
 
       axios.get('https://api.themoviedb.org/3/search/movie', {
         params: {
           api_key: this.apiKey, // apikey salvata nei parametri di data
-          query: this.search // associamo a query il valore di quello che andremo ad inserire
+          query: this.search, // associamo a query il valore di quello che andremo ad inserire
+          page: this.page
         }
       }).then(risp =>{
         this.allFilmTv = risp.data.results;
+        this.totalPages = risp.data.total_pages
 
         //per ogni item dell'array creo il link con il codice poster_path associato al film
       });
       axios.get('https://api.themoviedb.org/3/search/tv', {
         params: {
           api_key: this.apiKey, // apikey salvata nei parametri di data
-          query: this.search // associamo a query il valore di quello che andremo ad inserire
+          query: this.search, // associamo a query il valore di quello che andremo ad inserire
+          page: this.page
         }
       }).then(risp =>{
 
@@ -56,7 +61,7 @@ var app = new Vue({
       if (this.search != '') {
         this.title = this.search;
       }
-      this.search='';
+      console.log(this.totalPages);
     },
     //// Funzione per filtrare attori e generi MILESTONE 5
     filterCastGenre(id){
@@ -94,7 +99,7 @@ var app = new Vue({
       };
     },
     sortPopularity(){  // funzione per prendere film e serie più popolari
-      axios.get('https://api.themoviedb.org/3/discover/movie?&sort_by=popularity.desc&include_adult=false&include_video=false&page=1', {
+      axios.get('https://api.themoviedb.org/3/discover/movie?&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + this.page, {
         params:{
           api_key: this.apiKey
         }
@@ -102,7 +107,7 @@ var app = new Vue({
         this.allFilmTv = risp.data.results;
 
       });
-      axios.get('https://api.themoviedb.org/3/discover/tv?&sort_by=popularity.desc&include_adult=false&include_video=false&page=1', {
+      axios.get('https://api.themoviedb.org/3/discover/tv?&sort_by=popularity.desc&include_adult=false&include_video=false&page=' + this.page, {
         params:{
           api_key: this.apiKey
         }
@@ -225,14 +230,23 @@ var app = new Vue({
          break;
        }
     },
-    dropFilm(){ // funzione per il dropdown
+    dropFilm(){ // funzione per il dropdown del menu FILM
       this.showDropFilm = !this.showDropFilm;
       this.showDropTv = false;
     },
-    dropTv(){
+    dropTv(){ // funzione per il dropdown del menu SERIE TV
       this.showDropTv = !this.showDropTv;
       this.showDropFilm = false;
     },
-
+    nextPage(){  // MILESTONE EXTRA NEXT & PREV PAGE
+      this.allFilmTv = [];
+      this.page++;
+      this.filter();
+    },
+    prevPage(){ // MILESTONE EXTRA NEXT & PREV PAGE
+      this.allFilmTv = [];
+      this.page--;
+      this.filter();
+    }
   }
 });

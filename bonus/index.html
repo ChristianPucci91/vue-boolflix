@@ -30,7 +30,7 @@
           class="navbar"
           @click="dropFilm()"
           :class="{'border' : showDropFilm}" >
-            <p >Film</p>
+            <p>Film</p>
             <div class="dropdown":class="{'active' : showDropFilm}" onload="showDropTv = false">
              <ul>
 
@@ -84,12 +84,7 @@
              </ul>
             </div>
           </div>
-          <div
-          class="navbar">
-
-            <p>Preferiti</p>
-
-          </div>
+    
         </div>
 
           <!-- dropdown per scelta genere tra film e serie tv -->
@@ -111,8 +106,18 @@
 
       <!---  FINE HEADER-------------->
       <main>
-        <h1 class="show_genre" :class="{hide:allFilmTv.length == 0}">{{title}}</h1>
-        <!-- Titolo ad apertura pagina -->
+
+        <div class="header_bottom">
+          <!-- Titolo ad apertura pagina -->
+          <h1 class="show_genre" :class="{hide:allFilmTv.length == 0}">{{title}}</h1>
+           <!-- MILESTONE EXTRA CAMBIO PAGINA -->
+          <div class="page" v-if="totalPages > 1 && search != ''">
+            <i @click="prevPage()" v-if="page > 1" class="fas fa-chevron-left"></i>
+            {{page}} of {{totalPages}}
+            <i @click="nextPage()" v-if="page < totalPages" class="fas fa-chevron-right"></i>
+          </div>
+
+        </div>
 
         <nav v-if="(allFilmTv.length != 0 )">
         <!--- la funzione verrà richiamata ogni volta che il mouse entra in questo elemento-->
