@@ -139,7 +139,8 @@
 
                 <!-- //MILESTONE 5 -->
                 <div class="actors">
-                  <span v-for="actor in actorsMovies">{{actor.name}}, </span>
+                  <span v-if="movie.title !== undefined" v-for="actor in actorsMovies">{{actor.name}}, </span>
+                  <span v-for="actor in actorsSeries">{{actor.name}}, </span>
                 </div>
                 <!-- // MILESTONE 5 -->
                 <div class="overview" v-if="movie.overview">

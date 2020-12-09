@@ -5,7 +5,7 @@ var app = new Vue({
   el: "#root",
   data: {
     logo:'img/logo.png', // logo boolfix
-    apiKey:'da0d46e7635a0896a9556496ca9aabfb',
+    apiKey:'f1ec21274d82859fd9fa8b0300e9a3b5',
     search:'', // v-model per cercare i film
     movies:[],// array dei film
     series:[], // array delle serie tv
